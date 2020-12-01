@@ -13,14 +13,6 @@ function setup() {
   me = createVector(350,350);
 }
 
-function keyTyped() {
-  if (key === '1') {
-	
-  } else if (key === '2') {
-
-  }
-}
-
 
 function draw() {
   background(230,100,250);
@@ -46,7 +38,29 @@ function draw() {
   learnings = learnings.filter(p => { return p.lifespan < maxlifespan})
   
   Confettis = Confettis.filter(p => { return p.lifespan < maxlifespan})
+  
+      if (key === 'a') {
+    background(200,30,90);
+        learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
+    for (let p of learnings){
+    p.draw();
+    p.move();
+    p.magnet();
+  }
+    }
+  if (key === 'b') {
+    background(100,30,190);
+      Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of Confettis){
+    p.draw();
+    p.move();
+    p.magnet();
+  }
+    }
+  
 }
+
+
 
 function learning(x, y, xvel, yvel){
     this.pos = createVector(x,y);
@@ -74,6 +88,7 @@ function learning(x, y, xvel, yvel){
       magpull.normalize().mult(magstrength);
       this.vel.add(magpull);
     }
+  
 }
 
 function Confetti(x, y, xvel, yvel){
