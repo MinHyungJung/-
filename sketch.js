@@ -1,3 +1,14 @@
+var learnings = [];
+var meStrength = 25;
+let maxlifespan = 100;
+
+
+function setup() {
+  createCanvas(700, 700);
+  me = createVector(350,350);
+}
+
+
 function learning(x, y, xvel, yvel){
     this.pos = createVector(x,y);
     this.vel = createVector(random(-1, 1), random(-2, 2));
