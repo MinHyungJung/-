@@ -13,6 +13,15 @@ function setup() {
   me = createVector(350,350);
 }
 
+function keyTyped() {
+  if (key === '1') {
+	
+  } else if (key === '2') {
+
+  }
+}
+
+
 function draw() {
   background(230,100,250);
   strokeWeight(2);
