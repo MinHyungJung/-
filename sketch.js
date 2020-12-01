@@ -40,16 +40,20 @@ function draw() {
   Confettis = Confettis.filter(p => { return p.lifespan < maxlifespan})
   
       if (key === 'a') {
-    background(200,30,90);
+        background(200,30,90);
+        
         learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
     for (let p of learnings){
     p.draw();
     p.move();
     p.magnet();
   }
+        fill(20,20,190);
+        textSize(200);
+        text(key, 290, 400);
     }
   if (key === 'b') {
-    background(100,30,190);
+    background(100,120,90);
       Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
   for (let p of Confettis){
     p.draw();
@@ -57,6 +61,10 @@ function draw() {
     p.magnet();
   }
     }
+  
+        fill(20,120,190);
+        textSize(200);
+        text(key, 290, 400);
   
 }
 
