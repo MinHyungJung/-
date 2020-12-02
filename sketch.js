@@ -11,11 +11,37 @@ var msy = 50;
 function setup() {
   createCanvas(1500, 900);
   me = createVector(350,350);
+  page = new artPage();
 }
 
 
 function draw() {
-  background(230,100,250);
+  
+ 
+    
+    page.FirstPage(page.FirstPage_bool);
+  
+  
+ 
+}
+
+
+
+
+//---------------page design--------------------------
+
+class artPage {
+  
+  constructor() {
+    this.FirstPage_bool = true;
+    this.SeasonSellectPage_bool = false;
+
+  
+  
+  this.FirstPage = function(bool) {
+        if (bool == true) {    
+                 
+  background(30,100,250);
   strokeWeight(2);
   fill(255,0,0);
 
@@ -66,8 +92,19 @@ function draw() {
         textSize(200);
         text(key, 290, 400);
   
-}
+    
 
+  }
+  }
+  
+  this.SeasonSellectPage = function(bool) {
+    
+  background(255);
+  }
+ 
+  
+}
+}
 
 
 function learning(x, y, xvel, yvel){
