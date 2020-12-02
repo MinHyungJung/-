@@ -19,7 +19,12 @@ function draw() {
   
  
     
-    page.FirstPage(page.FirstPage_bool);
+  page.FirstPage(page.FirstPage_bool);
+  
+  if (key === 's') {
+      page.SeasonSellectPage(page.SeasonSellectPage);
+    }
+  
   
   
  
@@ -39,13 +44,16 @@ class artPage {
   
   
   this.FirstPage = function(bool) {
-        if (bool == true) {    
-                 
+    
+  if (bool == true) {               
   background(30,100,250);
   strokeWeight(2);
   fill(255,0,0);
 
-  fill(0);
+
+    fill(0);
+    textSize(200);
+    text('Hello', 300,300);
   
   learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
   for (let p of learnings){
@@ -96,15 +104,31 @@ class artPage {
 
   }
   }
+    
   
   this.SeasonSellectPage = function(bool) {
     
   background(255);
+    fill(250,255,0);
+    rect(0,0,20,2000);
+    fill(250,255,0);
+    rect(0,0,4000,20);
+    fill(250,255,0);
+    rect(1500,0,20,2000);             fill(250,255,0);
+    rect(0,900,4000,20);
+    
+    
+    
+    
   }
+
  
   
 }
 }
+
+
+//------------------------learning & Confetti---------------------------------
 
 
 function learning(x, y, xvel, yvel){
