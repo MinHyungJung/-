@@ -9,7 +9,7 @@ var msx = 50;
 var msy = 50;
 
 function setup() {
-  createCanvas(700, 700);
+  createCanvas(1500, 900);
   me = createVector(350,350);
 }
 
