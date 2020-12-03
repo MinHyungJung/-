@@ -10,7 +10,7 @@ var msy = 50;
 var i = 0
 
 function setup() {
-  createCanvas(1500, 900);
+  createCanvas(1500, 800);
   me = createVector(350,350);
   page = new artPage();
 }
@@ -55,18 +55,18 @@ class artPage {
    i = i + 1;
     
 
-     if  (random(12)>10){
+     if  (random(12)>11){
    
-    fill(0);
+    fill(205,255,0);
     textSize(100);
-    text('여겨름울가봄을', 300,300);
+    text('여겨름 울가 봄을', 380,400);
     }
     
     else {
     
-    fill(0);
+    fill(255,245,0);
     textSize(100);
-    text('봄 여름 가을 겨울', 300,300);
+    text('봄 여름 가을 겨울', 380,400);
     }
   
  
@@ -183,3 +183,4 @@ function Confetti(x, y, xvel, yvel){
       this.vel.add(magpull);
     }
 }
+
