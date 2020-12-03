@@ -7,6 +7,7 @@ var meStrength = 25;
 var Confettis = [];
 var msx = 50;
 var msy = 50;
+var i = 0
 
 function setup() {
   createCanvas(1500, 900);
@@ -50,55 +51,27 @@ class artPage {
   strokeWeight(2);
   fill(255,0,0);
 
+   
+   i = i + 1;
+    
 
+     if  (random(12)>10){
+   
     fill(0);
-    textSize(200);
-    text('Hello', 300,300);
-  
-  learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of learnings){
-    p.draw();
-    p.move();
-    p.magnet();
-  }
-  
-  Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of Confettis){
-    p.draw();
-    p.move();
-    p.magnet();
-  }
-  
-  learnings = learnings.filter(p => { return p.lifespan < maxlifespan})
-  
-  Confettis = Confettis.filter(p => { return p.lifespan < maxlifespan})
-  
-      if (key === 'a') {
-        background(200,30,90);
-        
-        learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-    for (let p of learnings){
-    p.draw();
-    p.move();
-    p.magnet();
-  }
-        fill(20,20,190);
-        textSize(200);
-        text(key, 290, 400);
+    textSize(100);
+    text('여겨름울가봄을', 300,300);
     }
-  if (key === 'b') {
-    background(100,120,90);
-      Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of Confettis){
-    p.draw();
-    p.move();
-    p.magnet();
-  }
+    
+    else {
+    
+    fill(0);
+    textSize(100);
+    text('봄 여름 가을 겨울', 300,300);
     }
   
-        fill(20,120,190);
-        textSize(200);
-        text(key, 290, 400);
+ 
+  
+      
   
     
 
@@ -117,6 +90,23 @@ class artPage {
     rect(1500,0,20,2000);             fill(250,255,0);
     rect(0,900,4000,20);
     
+     learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of learnings){
+    p.draw();
+    p.move();
+    p.magnet();
+  }
+  
+  Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of Confettis){
+    p.draw();
+    p.move();
+    p.magnet();
+  }
+  
+  learnings = learnings.filter(p => { return p.lifespan < maxlifespan})
+  
+  Confettis = Confettis.filter(p => { return p.lifespan < maxlifespan})
     
     
     
