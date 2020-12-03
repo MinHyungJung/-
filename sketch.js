@@ -1,34 +1,30 @@
 let friction = 0.98;
 let maxlifespan = 100;
 let maxSpeed = 20;
-var learnings = [];
-var me;
-var meStrength = 25;
-var Confettis = [];
+var MinMinds = [];
+var Pop1;
+var Pop2;
+var meStrength = 15;
+var SallyMinds = [];
 var msx = 50;
 var msy = 50;
 var i = 0
 
 function setup() {
   createCanvas(1500, 800);
-  me = createVector(350,350);
+  Pop1 = createVector(350,350);
+  Pop2 = createVector(1250,350);
   page = new artPage();
 }
 
 
 function draw() {
   
- 
-    
   page.FirstPage(page.FirstPage_bool);
   
   if (key === 's') {
       page.SeasonSellectPage(page.SeasonSellectPage);
     }
-  
-  
-  
- 
 }
 
 
@@ -68,17 +64,12 @@ class artPage {
     textSize(100);
     text('봄 여름 가을 겨울', 380,400);
     }
-  
- 
-  
-      
-  
-    
-
   }
   }
     
   
+    
+    
   this.SeasonSellectPage = function(bool) {
     
   background(255);
@@ -87,26 +78,29 @@ class artPage {
     fill(250,255,0);
     rect(0,0,4000,20);
     fill(250,255,0);
-    rect(1500,0,20,2000);             fill(250,255,0);
-    rect(0,900,4000,20);
+    rect(1500,0,20,2000);
+    fill(250,255,0);
+    rect(0,800,4000,20);
     
-     learnings.push(new learning(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of learnings){
+
+  
+  SallyMinds.push(new SallyMind(random(1230,1270),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of SallyMinds){
+    p.draw();
+    p.move();
+    p.magnet();
+  }
+    
+         MinMinds.push(new MinMind(random(330,370),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of MinMinds){
     p.draw();
     p.move();
     p.magnet();
   }
   
-  Confettis.push(new Confetti(random(330,370),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of Confettis){
-    p.draw();
-    p.move();
-    p.magnet();
-  }
+  MinMinds = MinMinds.filter(p => { return p.lifespan < maxlifespan})
   
-  learnings = learnings.filter(p => { return p.lifespan < maxlifespan})
-  
-  Confettis = Confettis.filter(p => { return p.lifespan < maxlifespan})
+  SallyMinds = SallyMinds.filter(p => { return p.lifespan < maxlifespan})
     
     
     
@@ -121,7 +115,7 @@ class artPage {
 //------------------------learning & Confetti---------------------------------
 
 
-function learning(x, y, xvel, yvel){
+function MinMind(x, y, xvel, yvel){
     this.pos = createVector(x,y);
     this.vel = createVector(random(-1, 1), random(-2, 2));
     this.lifespan = 10;
@@ -142,15 +136,16 @@ function learning(x, y, xvel, yvel){
     }
   
     this.magnet = function(){
-      var magpull = p5.Vector.sub(me,this.pos);
-      var magstrength = meStrength / this.pos.dist(me);
+      var magpull = p5.Vector.sub(Pop1,this.pos);
+      var magstrength = meStrength / this.pos.dist(Pop1);
       magpull.normalize().mult(magstrength);
       this.vel.add(magpull);
     }
-  
 }
 
-function Confetti(x, y, xvel, yvel){
+
+
+function SallyMind(x, y, xvel, yvel){
     this.pos = createVector(x,y);
     this.vel = createVector(random(-1, 1), random(-2, 2));
     this.lifespan = 10;
@@ -158,7 +153,7 @@ function Confetti(x, y, xvel, yvel){
   
     this.draw = function(){
     rectMode(CENTER);
-    fill(255, this.lifespan*5);
+    fill(127, this.lifespan*10);
     stroke(255, this.lifespan);
     strokeWeight(2);
     push();
@@ -177,10 +172,9 @@ function Confetti(x, y, xvel, yvel){
     }
   
     this.magnet = function(){
-      var magpull = p5.Vector.sub(me,this.pos);
-      var magstrength = meStrength / this.pos.dist(me);
+      var magpull = p5.Vector.sub(Pop2,this.pos);
+      var magstrength = meStrength / this.pos.dist(Pop2);
       magpull.normalize().mult(magstrength);
       this.vel.add(magpull);
     }
 }
-
