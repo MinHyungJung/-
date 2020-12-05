@@ -46,10 +46,17 @@ class artPage {
     
   if (bool == true) {               
   background(30,100,250);
-  strokeWeight(2);
-  fill(255,0,0);
+  strokeWeight(6);
+  fill(255,255,0);
 
-   
+  
+   textSize(70);
+    text('Start     s',570,600);
+    
+    noFill()
+    rect(540,535,400,80);
+    line(780,535,780,615);
+    
    i = i + 1;
     
 
@@ -67,6 +74,8 @@ class artPage {
     text('봄 여름 가을 겨울', 380,400);
     }
   }
+    
+    
   }
     
   
