@@ -24,6 +24,7 @@ function draw() {
   
   if (key === 's') {
       page.SeasonSellectPage(page.SeasonSellectPage);
+      
     }
 }
 
@@ -37,6 +38,7 @@ class artPage {
   constructor() {
     this.FirstPage_bool = true;
     this.SeasonSellectPage_bool = false;
+    
 
   
   
@@ -71,6 +73,7 @@ class artPage {
     
     
   this.SeasonSellectPage = function(bool) {
+    if (bool) {
     
   background(255);
     fill(250,255,0);
@@ -81,6 +84,9 @@ class artPage {
     rect(1500,0,20,2000);
     fill(250,255,0);
     rect(0,800,4000,20);
+      
+    
+      
     
 
   
@@ -101,10 +107,53 @@ class artPage {
   MinMinds = MinMinds.filter(p => { return p.lifespan < maxlifespan})
   
   SallyMinds = SallyMinds.filter(p => { return p.lifespan < maxlifespan})
+  }
+    var SeasonxSize =300;
+    var SeasonySize =500;
+    var SeasonxInterval = 350;
+    var s = 0;
+    var v = 0;
+    var downy = 60;
+    
+    fill(255,255,0);
+    
+    rect(230,400,SeasonxSize,SeasonySize)
+  
+    rect(230+SeasonxInterval,400,SeasonxSize,SeasonySize);
+    
+    s = SeasonxInterval + SeasonxInterval;
+    
+    rect(230+s,400,SeasonxSize,SeasonySize);
+    
+    v= s + SeasonxInterval
+    
+    rect(230+v,400,SeasonxSize,SeasonySize);
+    
+    
+    
+   fill(0);
+    
+    rect(230,400+downy,SeasonxSize,SeasonySize-490);
+    
+    rect(230+SeasonxInterval,400+downy,SeasonxSize,SeasonySize-490);
+    
+    rect(230+s,400+downy,SeasonxSize,SeasonySize-490);
+    
+    rect(230+v,400+downy,SeasonxSize,SeasonySize-490);
+    
+    
+
+    
+
+    
+    
+
+
     
     
     
   }
+    
 
  
   
@@ -124,7 +173,7 @@ function MinMind(x, y, xvel, yvel){
     this.draw = function(){
       stroke(200, this.lifespan);
     strokeWeight(2);
-    fill(127, this.lifespan*10);
+    fill(107,250,100, this.lifespan*10);
        ellipse(this.pos.x,this.pos.y,12,12); 
     }
   
@@ -153,7 +202,7 @@ function SallyMind(x, y, xvel, yvel){
   
     this.draw = function(){
     rectMode(CENTER);
-    fill(127, this.lifespan*10);
+    fill(107,250,100, this.lifespan*10);
     stroke(255, this.lifespan);
     strokeWeight(2);
     push();
