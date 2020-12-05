@@ -141,7 +141,7 @@ class artPage {
     
     
     
-   fill(0);
+   fill(107,250,100);
     
     rect(230,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
     
@@ -151,9 +151,14 @@ class artPage {
     
     rect(230+v,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
     
+    
+    fill(0);
     textSize(100);
   text('Choose your Season',300,120);
-    
+    text('봄',175,SeasonyPos+190);
+    text('여름',130+SeasonxInterval,SeasonyPos+190);
+    text('가을',130+s,SeasonyPos+190);
+    text('겨울',130+v,SeasonyPos+190);
     
 
     
