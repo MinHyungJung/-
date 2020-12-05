@@ -110,36 +110,40 @@ class artPage {
   }
     var SeasonxSize =300;
     var SeasonySize =500;
+    var SeasonyPos = 450;
     var SeasonxInterval = 350;
     var s = 0;
     var v = 0;
-    var downy = 60;
+    var downy = 70;
     
     fill(255,255,0);
     
-    rect(230,400,SeasonxSize,SeasonySize)
+    rect(230,SeasonyPos,SeasonxSize,SeasonySize)
   
-    rect(230+SeasonxInterval,400,SeasonxSize,SeasonySize);
+    rect(230+SeasonxInterval,SeasonyPos,SeasonxSize,SeasonySize);
     
     s = SeasonxInterval + SeasonxInterval;
     
-    rect(230+s,400,SeasonxSize,SeasonySize);
+    rect(230+s,SeasonyPos,SeasonxSize,SeasonySize);
     
     v= s + SeasonxInterval
     
-    rect(230+v,400,SeasonxSize,SeasonySize);
+    rect(230+v,SeasonyPos,SeasonxSize,SeasonySize);
     
     
     
    fill(0);
     
-    rect(230,400+downy,SeasonxSize,SeasonySize-490);
+    rect(230,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
     
-    rect(230+SeasonxInterval,400+downy,SeasonxSize,SeasonySize-490);
+    rect(230+SeasonxInterval,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
     
-    rect(230+s,400+downy,SeasonxSize,SeasonySize-490);
+    rect(230+s,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
     
-    rect(230+v,400+downy,SeasonxSize,SeasonySize-490);
+    rect(230+v,SeasonyPos+downy,SeasonxSize,SeasonySize-490);
+    
+    textSize(100);
+  text('Choose your Season',300,120);
     
     
 
