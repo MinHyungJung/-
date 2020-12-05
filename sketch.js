@@ -5,7 +5,7 @@ var MinMinds = [];
 var Pop1;
 var Pop2;
 var meStrength = 15;
-var SallyMinds = [];
+var VandalMinds = [];
 var msx = 50;
 var msy = 50;
 var i = 0
@@ -99,8 +99,8 @@ class artPage {
     
 
   
-  SallyMinds.push(new SallyMind(random(1230,1270),random(330,370),random(-1,1),random(-1,1)));
-  for (let p of SallyMinds){
+  VandalMinds.push(new VandalMind(random(1230,1270),random(330,370),random(-1,1),random(-1,1)));
+  for (let p of VandalMinds){
     p.draw();
     p.move();
     p.magnet();
@@ -115,7 +115,7 @@ class artPage {
   
   MinMinds = MinMinds.filter(p => { return p.lifespan < maxlifespan})
   
-  SallyMinds = SallyMinds.filter(p => { return p.lifespan < maxlifespan})
+  VandalMinds = VandalMinds.filter(p => { return p.lifespan < maxlifespan})
   }
     var SeasonxSize =300;
     var SeasonySize =500;
@@ -212,7 +212,7 @@ function MinMind(x, y, xvel, yvel){
 
 
 
-function SallyMind(x, y, xvel, yvel){
+function VandalMind(x, y, xvel, yvel){
     this.pos = createVector(x,y);
     this.vel = createVector(random(-1, 1), random(-2, 2));
     this.lifespan = 10;
