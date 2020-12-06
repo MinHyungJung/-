@@ -26,8 +26,78 @@ function draw() {
       page.SeasonSellectPage(page.SeasonSellectPage);
       
     }
+    SeasonSellectTool();
 }
 
+
+function SeasonSellectTool() {
+  
+   if (key === 'q') {
+    page.SeasonSellectPage(page.SeasonSellectPage);
+    
+
+    fill(30,100,250);
+    rect(85,450,10,500);
+    rect(380,450,10,500);
+    rect(232.5,200,305,10);
+    rect(232.5,700,305,10);
+    rect(85,200,10,100);
+    rect(380,200,10,100);
+    rect(232.5,150,305,10);
+    textSize(30);
+    text('Press Space bar!',120,185);
+    background(0,5);
+     
+  } 
+  if (key === 'w') {
+    page.SeasonSellectPage(page.SeasonSellectPage);
+    
+
+    fill(30,100,250);
+    rect(85+350,450,10,500);
+    rect(380+350,450,10,500);
+    rect(232.5+350,200,305,10);
+    rect(232.5+350,700,305,10);
+    rect(85+350,200,10,100);
+    rect(380+350,200,10,100);
+    rect(232.5+350,150,305,10);
+    textSize(30);
+    text('Press Space bar!',120+350,185);    
+    background(0,5);
+  } 
+  if (key === 'e') {
+    page.SeasonSellectPage(page.SeasonSellectPage);
+    
+
+    fill(30,100,250);
+    rect(85+350+350,450,10,500);
+    rect(380+350+350,450,10,500);
+    rect(232.5+350+350,200,305,10);
+    rect(232.5+350+350,700,305,10);
+    rect(85+350+350,200,10,100);
+    rect(380+350+350,200,10,100);
+    rect(232.5+350+350,150,305,10);
+    textSize(30);
+    text('Press Space bar!',120+350+350,185);    
+    background(0,5);
+  } 
+    if (key === 'r') {
+    page.SeasonSellectPage(page.SeasonSellectPage);
+    
+
+    fill(30,100,250);
+    rect(85+350+350+350,450,10,500);
+    rect(380+350+350+350,450,10,500);
+    rect(232.5+350+350+350,200,305,10);
+    rect(232.5+350+350+350,700,305,10);
+    rect(85+350+350+350,200,10,100);
+    rect(380+350+350+350,200,10,100);
+    rect(232.5+350+350+350,150,305,10);
+    textSize(30);
+    text('Press Space bar!',120+350+350+350,185);      
+    background(0,5);
+  } 
+}
 
 
 
@@ -93,6 +163,10 @@ class artPage {
     rect(1500,0,20,2000);
     fill(250,255,0);
     rect(0,800,4000,20);
+      
+      
+      
+ 
       
     
       
@@ -160,10 +234,27 @@ class artPage {
     text('가을',130+s,SeasonyPos+190);
     text('겨울',130+v,SeasonyPos+190);
     
-
+   fill(30,100,250);
+    textSize(50);
+    text('q', 205, 750);
+    text('w', 205+350, 750);
+    text('e', 205+350+350, 750);
+    text('r', 205+350+350+350, 750);
     
-
     
+    if (key === 's') {
+    fill(30,100,250);
+    rect(85,450,10,500);
+    rect(380,450,10,500);
+    rect(232.5,200,305,10);
+    rect(232.5,700,305,10);
+    rect(85,200,10,100);
+    rect(380,200,10,100);
+    rect(232.5,150,305,10);
+    textSize(30);
+    text('Press Space bar!',120,185);
+    background(0,5);
+                   }
     
 
 
@@ -245,3 +336,5 @@ function VandalMind(x, y, xvel, yvel){
       this.vel.add(magpull);
     }
 }
+
+
