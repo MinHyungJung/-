@@ -9,6 +9,10 @@ var VandalMinds = [];
 var msx = 50;
 var msy = 50;
 var i = 0
+let spring = false;
+let summer = false;
+let autumn = false;
+let winter = false;
 
 function setup() {
   createCanvas(1500, 800);
@@ -27,6 +31,57 @@ function draw() {
       
     }
     SeasonSellectTool();
+  
+  
+  
+  //--------------------Season Page-----------------------------
+  
+  if (keyCode === 81) {
+       spring = true;
+       summer = false; 
+       autumn = false;
+       winter = false;
+  } 
+  if (keyCode === 87) {
+       spring = false;
+       summer = true;
+       autumn = false;
+       winter = false;
+  }
+    if (keyCode === 69) {
+       spring = false;
+       summer = false;
+       autumn = true;
+       winter = false;
+  }
+      if (keyCode === 82) {
+       spring = false;
+       summer = false;
+       autumn = false;
+       winter = true;
+  }
+  
+  if (keyCode === 32) {
+  
+  if(spring === true) {
+     background(200,0,200);
+     }
+  
+  if(summer ===true) {
+    background(0,200,0);
+  }
+  if(autumn === true) {
+    background(0,0,200);
+  }
+  if(winter === true) {
+    background(200,200,100);
+  }
+  }
+  
+  
+  
+  
+  
 }
 
 
