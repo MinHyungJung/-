@@ -187,11 +187,12 @@ class MotorHigh {
 class FirstPage {
   
   constructor() {
-    this.x = 180;
-    this.y = 250;
+    this.x = 150;
+    this.y = 200;
     this.xpos =-400;
     this.ypos = 100;
-    this.fix =30;
+    this.xfix = 0;
+    this.yfix = 70;
     
   }
   
@@ -203,13 +204,13 @@ class FirstPage {
     text('모터의 주파수를 골라보세요.',-430,0);
     
     noStroke();
-    rect(this.xpos - this.fix,this.ypos,this.x,this.y);
+    rect(this.xpos - this.xfix,this.ypos + this.yfix,this.x,this.y);
     
     noStroke();
-    rect(this.xpos+330- this.fix,this.ypos,this.x,this.y);
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix,this.x,this.y);
     
     noStroke();
-    rect(this.xpos+660- this.fix,this.ypos,this.x,this.y);
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,this.x,this.y);
   }
   
   
@@ -219,10 +220,15 @@ class FirstPage {
     textFont(font);
     textSize(40);
   
-    text('q',this.xpos+45,330);
-    text('w',this.xpos+45+330,330);
-    text('e',this.xpos+45+660,330);
+    text('q',this.xpos+60,350);
+    text('w',this.xpos+56+330,350);
+    text('e',this.xpos+63+660,350);
+    textSize(90);
+    text('약',this.xpos+35,270);
     
+    text('중',this.xpos+35+330,270);
+    
+    text('강',this.xpos+35+660,270);
     
   }
   
@@ -231,7 +237,5 @@ class FirstPage {
   
   
 }
-
-
 
 
