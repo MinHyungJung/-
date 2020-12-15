@@ -1,16 +1,18 @@
 let motorLow;
 let motorMid;
 let motorHigh;
-
+let font;
 
 function setup() {
   createCanvas(1000, 800, WEBGL);
   
+  font = loadFont("BlackHanSans-Regular.ttf");
+  
   motorLow = new MotorLow();
   motorMid = new MotorMid();
   motorHigh =new MotorHigh();
-
   
+
   
 }
 
@@ -18,9 +20,11 @@ function draw() {
 	background(190,80,90);
   
   
+  
   if (keyCode === 81) {
     motorLow.light();
     motorLow.display();
+    motorLow.sellect();
       
   }
   
@@ -79,6 +83,17 @@ class MotorLow {
 	noStroke();
 	cylinder(8, 90);
 	pop();
+  }
+  
+  sellect() {
+    
+    textFont(font);
+    textSize(100);
+    text('Hi',10,10);
+    
+    
+    
+    
   }
   
   
