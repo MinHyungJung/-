@@ -2,6 +2,7 @@ let motorLow;
 let motorMid;
 let motorHigh;
 let font;
+let firstpage;
 
 function setup() {
   createCanvas(1000, 800, WEBGL);
@@ -11,15 +12,21 @@ function setup() {
   motorLow = new MotorLow();
   motorMid = new MotorMid();
   motorHigh =new MotorHigh();
+  firstpage = new FirstPage();
   
 
+    
   
 }
 
 function draw() {
 	background(190,80,90);
   
+  firstpage.display();
+  firstpage.text();
   
+
+    
   
   if (keyCode === 81) {
     motorLow.light();
@@ -40,10 +47,7 @@ function draw() {
   motorHigh.display();
    }
 
-    
-  
 
-	
 
 }
 
@@ -87,12 +91,8 @@ class MotorLow {
   
   sellect() {
     
-    textFont(font);
-    textSize(100);
-    text('Hi',10,10);
-    
-    
-    
+
+      
     
   }
   
@@ -183,5 +183,55 @@ class MotorHigh {
   
   
 }
+
+class FirstPage {
+  
+  constructor() {
+    this.x = 180;
+    this.y = 250;
+    this.xpos =-400;
+    this.ypos = 100;
+    this.fix =30;
+    
+  }
+  
+  display() {
+    
+    fill(255);
+    textFont(font);
+    textSize(80);
+    text('모터의 주파수를 골라보세요.',-430,0);
+    
+    noStroke();
+    rect(this.xpos - this.fix,this.ypos,this.x,this.y);
+    
+    noStroke();
+    rect(this.xpos+330- this.fix,this.ypos,this.x,this.y);
+    
+    noStroke();
+    rect(this.xpos+660- this.fix,this.ypos,this.x,this.y);
+  }
+  
+  
+  text() {
+    
+    fill(190,80,90);
+    textFont(font);
+    textSize(40);
+  
+    text('q',this.xpos+45,330);
+    text('w',this.xpos+45+330,330);
+    text('e',this.xpos+45+660,330);
+    
+    
+  }
+  
+  
+  
+  
+  
+}
+
+
 
 
