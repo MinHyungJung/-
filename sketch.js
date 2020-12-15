@@ -1,7 +1,7 @@
 let motor;
 
 function setup() {
-  createCanvas(900, 800, WEBGL);
+  createCanvas(1000, 800, WEBGL);
   
   motor = new Motor();
   
@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-	background(50);
+	background(190,80,90);
   
   motor.light();
   motor.display();
@@ -30,7 +30,7 @@ class Motor {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(60, 60, 60);
+  ambientLight(160, 160, 160);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -40,12 +40,20 @@ class Motor {
     push();
 	translate(0, -300);
 	rotateY(frameCount * 0.09);
-	rotateZ(0.03);
-	fill(25,40,200);
+	rotateZ(0.005);
+	fill(25,100,120);
 	noStroke();
-	cylinder(50, 200);
+	cylinder(100, 250);
 	pop();
-     
+    
+    push();
+    translate(0,-160);
+	rotateY(frameCount * 0.7);
+	rotateZ(0.07);
+	fill(190);
+	noStroke();
+	cylinder(8, 90);
+	pop();
   }
   
   
