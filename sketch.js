@@ -1,9 +1,11 @@
 let motor;
+let test;
 
 function setup() {
   createCanvas(1000, 800, WEBGL);
   
   motor = new Motor();
+  test = new Test();
   
   
 }
@@ -11,13 +13,38 @@ function setup() {
 function draw() {
 	background(190,80,90);
   
+   if (keyCode === 81) {
+  
   motor.light();
   motor.display();
-
+   }
+  
+  else {
+     test.display();
+    
+  }
 
 	
 
 }
+
+class Test {
+  
+  display() {
+    
+    fill(0);
+    rect(100,100,100,100);
+    
+    
+  }
+  
+  
+  
+}
+
+
+
+
 
 class Motor {
   
@@ -58,4 +85,6 @@ class Motor {
   
   
 }
+
+
 
