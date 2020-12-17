@@ -29,20 +29,23 @@ function draw() {
     
   
   if (keyCode === 81) {
+    firstpage.backgroundforLow();
     motorLow.light();
     motorLow.display();
     motorLow.sellect();
+ 
+   
       
   }
   
    if (keyCode === 87) {
-  
+  firstpage.backgroundforMid();
   motorMid.light();
   motorMid.display();
    }
   
      if (keyCode === 69) {
-  
+  firstpage.backgroundforHigh();
   motorHigh.light();
   motorHigh.display();
    }
@@ -187,10 +190,10 @@ class MotorHigh {
 class FirstPage {
   
   constructor() {
-    this.x = 150;
-    this.y = 200;
-    this.xpos =-400;
-    this.ypos = 100;
+    this.x = 120;
+    this.y = 170;
+    this.xpos =-390;
+    this.ypos = 130;
     this.xfix = 0;
     this.yfix = 70;
     
@@ -220,22 +223,44 @@ class FirstPage {
     textFont(font);
     textSize(40);
   
-    text('q',this.xpos+60,350);
-    text('w',this.xpos+56+330,350);
-    text('e',this.xpos+63+660,350);
+    text('q',this.xpos+48,350);
+    text('w',this.xpos+43+330,350);
+    text('e',this.xpos+48+660,350);
     textSize(90);
-    text('약',this.xpos+35,270);
+    text('약',this.xpos+20,280);
     
-    text('중',this.xpos+35+330,270);
+    text('중',this.xpos+23+330,280);
     
-    text('강',this.xpos+35+660,270);
+    text('강',this.xpos+22+660,280);
     
   }
+  
+  backgroundforLow() {
+    
+background(190,80,90);
+    
+    
+  }
+  
+  backgroundforMid() {
+    
+ background(190,80,90);  
+    
+    
+  }
+  
+    backgroundforHigh() {
+    
+background(190,80,90);
+    
+    
+  }
+  
+ 
   
   
   
   
   
 }
-
 
