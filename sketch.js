@@ -22,32 +22,39 @@ function setup() {
 function draw() {
 	background(190,80,90);
   
-  firstpage.display();
-  firstpage.text();
+  firstpage.displayInfo();
+  firstpage.displaySellect();
+
   
 
     
   
   if (keyCode === 81) {
+    
     firstpage.backgroundforLow();
+    
     motorLow.light();
     motorLow.display();
     motorLow.sellect();
- 
-   
-      
+    
   }
   
    if (keyCode === 87) {
+     
   firstpage.backgroundforMid();
+
   motorMid.light();
   motorMid.display();
+     
    }
   
      if (keyCode === 69) {
+       
   firstpage.backgroundforHigh();
+
   motorHigh.light();
   motorHigh.display();
+       
    }
 
 
@@ -199,25 +206,31 @@ class FirstPage {
     
   }
   
-  display() {
+  displayInfo() {
     
     fill(255);
     textFont(font);
     textSize(80);
     text('모터의 주파수를 골라보세요.',-430,0);
     
-    noStroke();
+  
+  }
+  
+  displaySellect() {
+    
+    //--------------Rect------------------
+    
+    fill(255);
+   noStroke();
     rect(this.xpos - this.xfix,this.ypos + this.yfix,this.x,this.y);
     
     noStroke();
     rect(this.xpos+330- this.xfix,this.ypos+ this.yfix,this.x,this.y);
     
     noStroke();
-    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,this.x,this.y);
-  }
-  
-  
-  text() {
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,this.x,this.y); 
+    
+    //--------------Text------------------
     
     fill(190,80,90);
     textFont(font);
@@ -237,22 +250,49 @@ class FirstPage {
   
   backgroundforLow() {
     
-background(190,80,90);
+    background(190,80,90);
+    
+    firstpage.displaySellect();
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos - this.xfix,this.ypos + this.yfix-10,this.x,10);
+    rect(this.xpos - this.xfix,this.ypos + this.yfix+170,this.x,10);
+    rect(this.xpos - this.xfix,this.ypos + this.yfix,10,this.y);
+    rect(this.xpos - this.xfix+110,this.ypos + this.yfix,10,this.y);
+    
     
     
   }
   
   backgroundforMid() {
     
- background(190,80,90);  
+    background(190,80,90); 
     
+    firstpage.displaySellect();
+    
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix-10,this.x,10);
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix+170,this.x,10);
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix,10,this.y);
+    rect(this.xpos+330- this.xfix+110,this.ypos+ this.yfix,10,this.y);
     
   }
   
     backgroundforHigh() {
     
-background(190,80,90);
+    background(190,80,90);
+    firstpage.displaySellect();
     
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix-10,this.x,10); 
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix+170,this.x,10); 
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,10,this.y); 
+    rect(this.xpos+660- this.xfix+110,this.ypos+ this.yfix,10,this.y); 
     
   }
   
