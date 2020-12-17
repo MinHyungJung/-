@@ -73,7 +73,7 @@ class MotorLow {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -93,7 +93,7 @@ class MotorLow {
     translate(0,-160);
 	rotateY(frameCount * 0.1);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
@@ -124,7 +124,7 @@ class MotorMid {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -144,7 +144,7 @@ class MotorMid {
     translate(0,-160);
 	rotateY(frameCount * 0.7);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
@@ -165,7 +165,7 @@ class MotorHigh {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -185,7 +185,7 @@ class MotorHigh {
     translate(0,-160);
 	rotateY(frameCount * 2);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
