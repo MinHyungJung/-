@@ -25,7 +25,7 @@ function setup() {
 }
 
 function draw() {
-	background(190,80,90);
+	background(0);
   
   firstpage.display();
   firstpage.text();
