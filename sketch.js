@@ -16,13 +16,20 @@ function setup() {
   motorMid = new MotorMid();
   motorHigh =new MotorHigh();
   firstpage = new FirstPage();
-  LowMusic = loadSound('LowMotorMusic.mp3');
-  LowMusic.setVolume(0.2);
+  LowMusic = loadSound('LowMotorMusic.mp3',loaded);
+  LowMusic.setVolume(0.5);
   
 
     
   
 }
+
+function loaded() {
+  
+  LowMusic.loop();
+  
+}
+
 
 function draw() {
 	background(190,80,90);
@@ -37,7 +44,7 @@ function draw() {
     motorLow.light();
     motorLow.display();
     motorLow.sellect();
-    LowMusic.play();
+ 
     
       
   }
@@ -46,17 +53,20 @@ function draw() {
   
   motorMid.light();
   motorMid.display();
+
    }
   
      if (keyCode === 69) {
   
   motorHigh.light();
   motorHigh.display();
+ 
    }
-
+  
 
 
 }
+
 
 
 class MotorLow {
