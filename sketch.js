@@ -8,6 +8,7 @@ var LowWave;
 var MidWave;
 var HighWave;
 
+
 function setup() {
   createCanvas(1000, 800, WEBGL);
   
@@ -41,6 +42,7 @@ function draw() {
   
   firstpage.displayInfo();
   firstpage.displaySellect();
+  
 
   
 
@@ -54,13 +56,17 @@ function draw() {
     motorLow.display();
     motorLow.sellect();
     LowWave.setType('sawtooth');
-    LowWave.amp(0.03);
+    LowWave.amp(0.05);
     LowWave.freq(130);
     LowWave.start();
     MidWave.stop();
     HighWave.stop();
     
   }
+     else {    
+     LowWave.stop();  
+  }
+
   
    if (keyCode === 87) {
      
@@ -69,12 +75,17 @@ function draw() {
     motorMid.light();
     motorMid.display();
     MidWave.setType('sawtooth')
-    MidWave.amp(0.03);
-    MidWave.freq(340);
+    MidWave.amp(0.02);
+    MidWave.freq(280);
     LowWave.stop();
     MidWave.start(); 
     HighWave.stop();   
    }
+  
+    else {    
+     MidWave.stop();  
+  }
+
   
      if (keyCode === 69) {
        
@@ -83,14 +94,18 @@ function draw() {
      motorHigh.light();
      motorHigh.display();
      HighWave.setType('sawtooth')
-     HighWave.amp(0.03);
-     HighWave.freq(520); 
+     HighWave.amp(0.02);
+     HighWave.freq(510); 
      HighWave.start(); 
      LowWave.stop();
      MidWave.stop();
 
        
    }
+  
+  else {    
+     HighWave.stop();  
+  }
 
 
 
