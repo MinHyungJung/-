@@ -4,8 +4,9 @@ let motorHigh;
 let font;
 let firstpage;
 let LowMusic;
-
-
+var LowWave;
+var MidWave;
+var HighWave;
 
 function setup() {
   createCanvas(1000, 800, WEBGL);
@@ -17,12 +18,16 @@ function setup() {
   motorHigh =new MotorHigh();
   firstpage = new FirstPage();
   LowMusic = loadSound('LowMotorMusic.mp3',loaded);
-  LowMusic.setVolume(0.5);
-  
+  LowMusic.setVolume(0.7);
+  LowWave = new p5.Oscillator();
+  MidWave = new p5.Oscillator();
+  HighWave = new p5.Oscillator();
+
 
     
   
 }
+
 
 function loaded() {
   
@@ -34,39 +39,62 @@ function loaded() {
 function draw() {
 	background(190,80,90);
   
-  firstpage.display();
-  firstpage.text();
+  firstpage.displayInfo();
+  firstpage.displaySellect();
+
   
 
     
   
   if (keyCode === 81) {
+    
+    firstpage.backgroundforLow();
+    
     motorLow.light();
     motorLow.display();
     motorLow.sellect();
- 
+    LowWave.setType('sawtooth');
+    LowWave.amp(0.03);
+    LowWave.freq(130);
+    LowWave.start();
+    MidWave.stop();
+    HighWave.stop();
     
-      
   }
   
    if (keyCode === 87) {
-  
-  motorMid.light();
-  motorMid.display();
+     
+  firstpage.backgroundforMid();
 
+    motorMid.light();
+    motorMid.display();
+    MidWave.setType('sawtooth')
+    MidWave.amp(0.03);
+    MidWave.freq(340);
+    LowWave.stop();
+    MidWave.start(); 
+    HighWave.stop();   
    }
   
      if (keyCode === 69) {
-  
-  motorHigh.light();
-  motorHigh.display();
- 
+       
+  firstpage.backgroundforHigh();
+
+     motorHigh.light();
+     motorHigh.display();
+     HighWave.setType('sawtooth')
+     HighWave.amp(0.03);
+     HighWave.freq(520); 
+     HighWave.start(); 
+     LowWave.stop();
+     MidWave.stop();
+
+       
    }
-  
+
 
 
 }
-
 
 
 class MotorLow {
@@ -80,7 +108,7 @@ class MotorLow {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -100,7 +128,7 @@ class MotorLow {
     translate(0,-160);
 	rotateY(frameCount * 0.1);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
@@ -131,7 +159,7 @@ class MotorMid {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -151,7 +179,7 @@ class MotorMid {
     translate(0,-160);
 	rotateY(frameCount * 0.7);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
@@ -172,7 +200,7 @@ class MotorHigh {
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;  
     
-  ambientLight(160, 160, 160);
+  ambientLight(180, 180, 180);
   pointLight(255, 255, 255, locX, locY, 100);  
     
   }
@@ -192,7 +220,7 @@ class MotorHigh {
     translate(0,-160);
 	rotateY(frameCount * 2);
 	rotateZ(0.07);
-	fill(190);
+	fill(200);
 	noStroke();
 	cylinder(8, 90);
 	pop();
@@ -204,54 +232,109 @@ class MotorHigh {
 class FirstPage {
   
   constructor() {
-    this.x = 150;
-    this.y = 200;
-    this.xpos =-400;
-    this.ypos = 100;
+    this.x = 120;
+    this.y = 170;
+    this.xpos =-390;
+    this.ypos = 130;
     this.xfix = 0;
     this.yfix = 70;
     
   }
   
-  display() {
+  displayInfo() {
     
     fill(255);
     textFont(font);
     textSize(80);
     text('모터의 주파수를 골라보세요.',-430,0);
     
-    noStroke();
+  
+  }
+  
+  displaySellect() {
+    
+    //--------------Rect------------------
+    
+    fill(255);
+   noStroke();
     rect(this.xpos - this.xfix,this.ypos + this.yfix,this.x,this.y);
     
     noStroke();
     rect(this.xpos+330- this.xfix,this.ypos+ this.yfix,this.x,this.y);
     
     noStroke();
-    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,this.x,this.y);
-  }
-  
-  
-  text() {
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,this.x,this.y); 
+    
+    //--------------Text------------------
     
     fill(190,80,90);
     textFont(font);
     textSize(40);
   
-    text('q',this.xpos+60,350);
-    text('w',this.xpos+56+330,350);
-    text('e',this.xpos+63+660,350);
+    text('q',this.xpos+48,350);
+    text('w',this.xpos+43+330,350);
+    text('e',this.xpos+48+660,350);
     textSize(90);
-    text('약',this.xpos+35,270);
+    text('약',this.xpos+20,280);
     
-    text('중',this.xpos+35+330,270);
+    text('중',this.xpos+23+330,280);
     
-    text('강',this.xpos+35+660,270);
+    text('강',this.xpos+22+660,280);
     
   }
+  
+  backgroundforLow() {
+    
+    background(190,80,90);
+    
+    firstpage.displaySellect();
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos - this.xfix,this.ypos + this.yfix-10,this.x,10);
+    rect(this.xpos - this.xfix,this.ypos + this.yfix+170,this.x,10);
+    rect(this.xpos - this.xfix,this.ypos + this.yfix,10,this.y);
+    rect(this.xpos - this.xfix+110,this.ypos + this.yfix,10,this.y);
+    
+    
+    
+  }
+  
+  backgroundforMid() {
+    
+    background(190,80,90); 
+    
+    firstpage.displaySellect();
+    
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix-10,this.x,10);
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix+170,this.x,10);
+    rect(this.xpos+330- this.xfix,this.ypos+ this.yfix,10,this.y);
+    rect(this.xpos+330- this.xfix+110,this.ypos+ this.yfix,10,this.y);
+    
+  }
+  
+    backgroundforHigh() {
+    
+    background(190,80,90);
+    firstpage.displaySellect();
+    
+    
+    fill(255,180,0);
+    noStroke();
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix-10,this.x,10); 
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix+170,this.x,10); 
+    rect(this.xpos+660- this.xfix,this.ypos+ this.yfix,10,this.y); 
+    rect(this.xpos+660- this.xfix+110,this.ypos+ this.yfix,10,this.y); 
+    
+  }
+  
+ 
   
   
   
   
   
 }
-
