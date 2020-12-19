@@ -1,4 +1,4 @@
-  let motorLow;
+let motorLow;
 let motorMid;
 let motorHigh;
 let font;
@@ -11,6 +11,8 @@ var boxSz = 300;
 var numSpheres = 50;
 var linkParticles = [];
 var t = 0.0;
+let mic;
+infoOn = true;
 
 
 
@@ -38,6 +40,7 @@ function setup() {
   LowWave = new p5.Oscillator();
   MidWave = new p5.Oscillator();
   HighWave = new p5.Oscillator();
+  mic = new Mic();
   
   
     
@@ -57,6 +60,7 @@ function draw() {
   
   firstpage.displayInfo();
   firstpage.displaySellect();
+
   
 
   
@@ -65,9 +69,25 @@ function draw() {
   
   if (keyCode === 81) {
     
+    infoOn = false;
+    
     firstpage.backgroundforLow();
-      fill(120,53,50);
-        rotateY(frameCount *0.01);
+    
+      mic.display();
+      mic.info();
+
+    
+    motorLow.light();
+    motorLow.display();
+    motorLow.sellect();
+    LowWave.setType('sawtooth');
+    LowWave.amp(0.05);
+    LowWave.freq(130);
+    LowWave.start();
+    MidWave.stop();
+    HighWave.stop();
+    fill(120,53,50);
+    rotateY(frameCount *0.01);
     for (var i = 0; i < linkParticles.length/5; i++) {
     linkParticles[i].display();
     }   
@@ -80,27 +100,21 @@ function draw() {
   }
 }
     
-    motorLow.light();
-    motorLow.display();
-    motorLow.sellect();
-    LowWave.setType('sawtooth');
-    LowWave.amp(0.05);
-    LowWave.freq(130);
-    LowWave.start();
-    MidWave.stop();
-    HighWave.stop();
-    
 
     
   }
      else {    
      LowWave.stop();  
+
   }
 
   
    if (keyCode === 87) {
+     infoOn = false;
      
   firstpage.backgroundforMid();
+     mic.display();
+     mic.info();
 
     motorMid.light();
     motorMid.display();
@@ -129,13 +143,19 @@ function draw() {
    }
   
     else {    
-     MidWave.stop();  
+     MidWave.stop();
+   
+    
   }
 
   
      if (keyCode === 69) {
        
+       infoOn = false;
+       
   firstpage.backgroundforHigh();
+       mic.display();
+       mic.info();
 
      motorHigh.light();
      motorHigh.display();
@@ -167,6 +187,7 @@ function draw() {
   
   else {    
      HighWave.stop();  
+  
   }
 
 
@@ -320,10 +341,12 @@ class FirstPage {
   
   displayInfo() {
     
+    if (infoOn === true) {
     fill(255);
     textFont(font);
     textSize(80);
     text('모터의 주파수를 골라보세요.',-430,0);
+    }
     
   
   }
@@ -432,12 +455,14 @@ function LinkParticle(_x, _y, _z) {
  
     push();
       translate(this.x, this.y, this.z);
-      sphere(boxSz/50, 16);
+      sphere(boxSz/(mouseY-330), 16);
     pop();
     
       this.x = lerp(this.x, this.newX, 0.02);
       this.y = lerp(this.y, this.newY, 0.01);
       this.z = lerp(this.z, this.newZ, 0.01);
+    
+
   
   }
   
@@ -446,11 +471,35 @@ function LinkParticle(_x, _y, _z) {
     this.newY = random(-boxSz, boxSz);
     this.newZ = random(-boxSz, boxSz);
   }
+   
+}
+
+class Mic {
   
- 
+  display() {
+    
+    fill(250,220,10);
+    rect(mouseX-510,mouseY-450,30,80);
+    
+    fill(30);
+    ellipse(mouseX-495,mouseY-450,70,70);
+    
+  
+  }
+  
+  info() {
+    
+    
+    fill(255,20);
+    textFont(font);
+    textSize(40);
+    text('모터가 노래를 하네요 마이크를 가까이 해볼까요?',-350,0);
+    
+    
+     
+  }
   
   
   
   
-  
-} 
+}
