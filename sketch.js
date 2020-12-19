@@ -516,7 +516,7 @@ function LinkParticle(_x, _y, _z) {
     fill(255,30);
     textFont(font);
     textSize(40);
-    text('너무 닫진 말아요. 당장은.',-350,0);
+    text('너무 닿진 말아요. 당장은.',-350,0);
   }
    
 }
