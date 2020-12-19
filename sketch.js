@@ -7,7 +7,7 @@ let LowMusic;
 var LowWave;
 var MidWave;
 var HighWave;
-var boxSz = 300;
+var particleSz = 300;
 var numSpheres = 50;
 var linkParticles = [];
 var t = 0.0;
@@ -15,20 +15,16 @@ let mic;
 infoOn = true;
 
 
-
-
 function setup() {
   createCanvas(1000, 800, WEBGL);
   
   for (var i = 0; i < numSpheres; i++) {
-    x = random(-boxSz, boxSz);
-    y = random(-boxSz, boxSz);
-    z = random(-boxSz, boxSz);   
-    linkParticles[i] = new LinkParticle(x,y,z)
-    
-  }
-
-  
+    x = random(-particleSz, particleSz);
+    y = random(-particleSz, particleSz);
+    z = random(-particleSz, particleSz);   
+    linkParticles[i] = new LinkParticle(x,y,z)    
+ }
+ 
   font = loadFont("BlackHanSans-Regular.ttf");
   
   motorLow = new MotorLow();
@@ -41,12 +37,13 @@ function setup() {
   MidWave = new p5.Oscillator();
   HighWave = new p5.Oscillator();
   mic = new Mic();
-  
-  
     
-  
 }
 
+
+
+
+//------------BackgroundMusic------------------
 
 function loaded() {
   
@@ -55,18 +52,16 @@ function loaded() {
 }
 
 
+//--------------------------------------------
+
+
 function draw() {
 	background(190,80,90);
   
   firstpage.displayInfo();
   firstpage.displaySellect();
 
-  
-
-  
-
-    
-  
+ //------------q-약-Low Motor-----------------------------  
   if (keyCode === 81) {
     
     infoOn = false;
@@ -98,23 +93,21 @@ function draw() {
     for (var i = 0; i < linkParticles.length/7; i++) {
     linkParticles[i].move();
   }
-}
-    
-
-    
+}        
   }
      else {    
      LowWave.stop();  
-
   }
 
+ 
+//------------------w-중-Mid Motor-----------------------  
   
    if (keyCode === 87) {
-     infoOn = false;
+    infoOn = false;
      
-  firstpage.backgroundforMid();
-     mic.display();
-     mic.info();
+    firstpage.backgroundforMid();
+    mic.display();
+    mic.info();
 
     motorMid.light();
     motorMid.display();
@@ -138,25 +131,20 @@ function draw() {
     for (var i = 0; i < linkParticles.length/2; i++) {
     linkParticles[i].move();
   }
-}
-    
+}    
    }
-  
     else {    
-     MidWave.stop();
-   
-    
+     MidWave.stop();    
   }
 
-  
+ 
+//---------------e-강-High Motor-----------------------  
      if (keyCode === 69) {
        
-       infoOn = false;
-       
-  firstpage.backgroundforHigh();
-       mic.display();
-       mic.info();
-
+     infoOn = false;   
+     firstpage.backgroundforHigh();
+     mic.display();
+     mic.info();
      motorHigh.light();
      motorHigh.display();
      HighWave.setType('sawtooth')
@@ -179,20 +167,16 @@ function draw() {
     for (var i = 0; i < linkParticles.length; i++) {
     linkParticles[i].move();
   }
-}
-    
-
-       
-   }
-  
+}       
+   }  
   else {    
-     HighWave.stop();  
-  
+     HighWave.stop();   
   }
-
-
-
 }
+
+
+
+//----------Motor Classes----------------
 
 
 class MotorLow {
@@ -207,9 +191,9 @@ class MotorLow {
   let locY = mouseY - width / 2;  
     
   ambientLight(180, 180, 180);
-  pointLight(255, 255, 255, locX, locY, 100);  
-    
+  pointLight(255, 255, 255, locX, locY, 100);     
   }
+  
   
   display() {
     
@@ -233,13 +217,9 @@ class MotorLow {
   }
   
   sellect() {
+         
     
-
-      
-    
-  }
-  
-  
+  }  
 }
 
 
@@ -282,9 +262,10 @@ class MotorMid {
 	cylinder(8, 90);
 	pop();
   }
-  
-  
+    
 }
+
+
 
 
 class MotorHigh {
@@ -322,10 +303,15 @@ class MotorHigh {
 	noStroke();
 	cylinder(8, 90);
 	pop();
-  }
-  
-  
+  }  
+   
 }
+
+
+
+
+
+//-------------Page Class------------------   
 
 class FirstPage {
   
@@ -430,16 +416,13 @@ class FirstPage {
     rect(this.xpos+660- this.xfix+110,this.ypos+ this.yfix,10,this.y); 
     
   }
-  
- 
-  
-  
-  
-  
-  
+      
 }
 
 
+
+
+//------------3D Particles---------------------
 
 function LinkParticle(_x, _y, _z) {
   
@@ -455,7 +438,7 @@ function LinkParticle(_x, _y, _z) {
  
     push();
       translate(this.x, this.y, this.z);
-      sphere(boxSz/(mouseY-330), 16);
+      sphere(particleSz/(mouseY-330), 16);
     pop();
     
       this.x = lerp(this.x, this.newX, 0.02);
@@ -467,12 +450,18 @@ function LinkParticle(_x, _y, _z) {
   }
   
   this.move = function() {
-    this.newX = random(-boxSz, boxSz);
-    this.newY = random(-boxSz, boxSz);
-    this.newZ = random(-boxSz, boxSz);
+    this.newX = random(-particleSz, particleSz);
+    this.newY = random(-particleSz, particleSz);
+    this.newZ = random(-particleSz, particleSz);
   }
    
 }
+
+
+
+
+//------------Microphone Class---------------------
+
 
 class Mic {
   
