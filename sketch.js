@@ -12,6 +12,7 @@ var numSpheres = 50;
 var linkParticles = [];
 var t = 0.0;
 let mic;
+let link;
 infoOn = true;
 
 
@@ -37,6 +38,7 @@ function setup() {
   MidWave = new p5.Oscillator();
   HighWave = new p5.Oscillator();
   mic = new Mic();
+  link = new Link();
     
 }
 
@@ -60,9 +62,13 @@ function draw() {
   
   firstpage.displayInfo();
   firstpage.displaySellect();
+  
+
 
  //------------q-약-Low Motor-----------------------------  
   if (keyCode === 81) {
+    
+    
     
     infoOn = false;
     
@@ -82,6 +88,19 @@ function draw() {
     MidWave.stop();
     HighWave.stop();
     fill(120,53,50);
+    
+    if (mouseY < 370) {
+      
+      frameCount = 0;
+      rotateY(0);
+
+    background(0);
+
+    for (var i = 0; i < linkParticles.length; i++) {
+    linkParticles[i].stop();
+    }
+      
+    }
     rotateY(frameCount *0.01);
     for (var i = 0; i < linkParticles.length/7; i++) {
     linkParticles[i].display();
@@ -92,6 +111,12 @@ function draw() {
     if(frameCount % 100 == 0) {
     for (var i = 0; i < linkParticles.length/7; i++) {
     linkParticles[i].move();
+      
+      
+      
+
+      
+
   }
 }        
   }
@@ -118,6 +143,19 @@ function draw() {
     MidWave.start(); 
     HighWave.stop();  
     fill(20,53,250);
+     
+    if (mouseY < 370) {
+      
+      frameCount = 0;
+      rotateY(0);
+
+    background(0);
+
+    for (var i = 0; i < linkParticles.length; i++) {
+    linkParticles[i].stop();
+    }
+      
+    }
     rotateY(frameCount *0.01);
     for (var i = 0; i < linkParticles.length/2; i++) {
     linkParticles[i].display();
@@ -154,6 +192,19 @@ function draw() {
      LowWave.stop();
      MidWave.stop();
     fill(220,253,5);
+       
+       if (mouseY < 370) {
+      
+      frameCount = 0;
+      rotateY(0);
+
+    background(0);
+
+    for (var i = 0; i < linkParticles.length; i++) {
+    linkParticles[i].stop();
+    }
+      
+    }
     rotateY(frameCount *0.01);
     for (var i = 0; i < linkParticles.length; i++) {
     linkParticles[i].display();
@@ -172,6 +223,8 @@ function draw() {
   else {    
      HighWave.stop();   
   }
+  
+
 }
 
 
@@ -454,6 +507,16 @@ function LinkParticle(_x, _y, _z) {
     this.newY = random(-particleSz, particleSz);
     this.newZ = random(-particleSz, particleSz);
   }
+  
+  this.stop = function() {
+    
+    rotateY(0);
+    background(0);
+    fill(255,30);
+    textFont(font);
+    textSize(40);
+    text('너무 닫진 말아요. 당장은.',-350,0);
+  }
    
 }
 
@@ -479,7 +542,7 @@ class Mic {
   info() {
     
     
-    fill(255,20);
+    fill(255,30);
     textFont(font);
     textSize(40);
     text('모터가 노래를 하네요 마이크를 가까이 해볼까요?',-350,0);
@@ -489,6 +552,23 @@ class Mic {
   }
   
   
+  
+  
+}
+
+
+class Link {
+  
+  display() {
+    
+
+    background(0);
+    fill(255,30);
+    textFont(font);
+    textSize(40);
+    text('너무 닫진 말아요. 당장은.',-350,0);
+    
+  }
   
   
 }
