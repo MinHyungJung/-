@@ -10,9 +10,13 @@ html, body {
 
 #Title {
   
-  width: 1660px;
-  height: 170px;
-  margin: 0;
+  width: 1000px;
+  height: 800px;
+  position: absolute;
+  left : 50%;
+  margin-left: -550px;
+  top: 50%;
+  margin-top: -450px;
   padding: 50px;
   padding-bottom: 100px;
   
@@ -30,8 +34,7 @@ html, body {
 
 
 .Text p{
-  padding-left: 10px;
-  padding-right: 10px;
+
 
   color: #f0f0f0;
   text-align: justify;
@@ -41,12 +44,16 @@ html, body {
 }
 
 .Text {
-  position: relative;
-  top: 1100px;
-  width: 1100px;
-  height: 85px;
+width: 1000px;
+  height: 500px;
+  position: absolute;
+  left : 50%;
+  margin-left: -500px;
+  top: 50%;
+  margin-top: 850px;
+ 
   padding-top: 0px;
-  padding: 20px;
+  padding: 0px;
   margin: 10;
   background-color: #923640;
 
@@ -59,29 +66,21 @@ html, body {
   display: block;
 }
 
-.Text h5{
-  margin-top: 1000px;
-  margin-bottom: 1000px;
 
-  color: #189340;
-  text-align: center;
-  font-size: 100px;
-  font-weight: bold;
-  font-family: "Nanum Gothic", sans-serif;
-}
 
 
 
 
 
 canvas {
-  position: relative;
-  top: 0px;
-  margin: 0;
-  padding: 380px;
-  padding-top: 5px;
-  padding-bottom: 500px;
-
+  width: 1000px;
+  height: 800px;
+  position: absolute;
+  left : 50%;
+  margin-left: -500px;
+  top: 50%;
+  margin-top: -150px;
+ 
   display: block;
 
 }
