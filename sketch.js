@@ -1,4 +1,4 @@
-let motorLow;
+  let motorLow;
 let motorMid;
 let motorHigh;
 let font;
@@ -7,10 +7,25 @@ let LowMusic;
 var LowWave;
 var MidWave;
 var HighWave;
+var boxSz = 300;
+var numSpheres = 50;
+var linkParticles = [];
+var t = 0.0;
+
+
 
 
 function setup() {
   createCanvas(1000, 800, WEBGL);
+  
+  for (var i = 0; i < numSpheres; i++) {
+    x = random(-boxSz, boxSz);
+    y = random(-boxSz, boxSz);
+    z = random(-boxSz, boxSz);   
+    linkParticles[i] = new LinkParticle(x,y,z)
+    
+  }
+
   
   font = loadFont("BlackHanSans-Regular.ttf");
   
@@ -23,8 +38,8 @@ function setup() {
   LowWave = new p5.Oscillator();
   MidWave = new p5.Oscillator();
   HighWave = new p5.Oscillator();
-
-
+  
+  
     
   
 }
@@ -51,6 +66,19 @@ function draw() {
   if (keyCode === 81) {
     
     firstpage.backgroundforLow();
+      fill(120,53,50);
+        rotateY(frameCount *0.01);
+    for (var i = 0; i < linkParticles.length/5; i++) {
+    linkParticles[i].display();
+    }   
+    if (frameCount % 50 == 0) {
+    linkParticles[int(random(linkParticles.length/5))].move();
+    }   
+    if(frameCount % 100 == 0) {
+    for (var i = 0; i < linkParticles.length/5; i++) {
+    linkParticles[i].move();
+  }
+}
     
     motorLow.light();
     motorLow.display();
@@ -61,6 +89,8 @@ function draw() {
     LowWave.start();
     MidWave.stop();
     HighWave.stop();
+    
+
     
   }
      else {    
@@ -79,7 +109,23 @@ function draw() {
     MidWave.freq(280);
     LowWave.stop();
     MidWave.start(); 
-    HighWave.stop();   
+    HighWave.stop();  
+    fill(20,53,250);
+    rotateY(frameCount *0.01);
+    for (var i = 0; i < linkParticles.length/2; i++) {
+    linkParticles[i].display();
+    }
+    
+    if (frameCount % 25 == 0) {
+    linkParticles[int(random(linkParticles.length/2))].move();
+    }
+    
+    if(frameCount % 100 == 0) {
+    for (var i = 0; i < linkParticles.length/2; i++) {
+    linkParticles[i].move();
+  }
+}
+    
    }
   
     else {    
@@ -99,6 +145,22 @@ function draw() {
      HighWave.start(); 
      LowWave.stop();
      MidWave.stop();
+    fill(220,253,5);
+    rotateY(frameCount *0.01);
+    for (var i = 0; i < linkParticles.length; i++) {
+    linkParticles[i].display();
+    }
+    
+    if (frameCount % 25 == 0) {
+    linkParticles[int(random(linkParticles.length))].move();
+    }
+    
+    if(frameCount % 100 == 0) {
+    for (var i = 0; i < linkParticles.length; i++) {
+    linkParticles[i].move();
+  }
+}
+    
 
        
    }
@@ -353,3 +415,42 @@ class FirstPage {
   
   
 }
+
+
+
+function LinkParticle(_x, _y, _z) {
+  
+  this.x = _x;
+  this.y = _y;
+  this.z = _z;
+  this.newX = 0;
+  this.newY = -500;
+  this.newZ = 0;
+  
+  
+  this.display = function() {
+ 
+    push();
+      translate(this.x, this.y, this.z);
+      sphere(boxSz/50, 16);
+    pop();
+    
+      this.x = lerp(this.x, this.newX, 0.02);
+      this.y = lerp(this.y, this.newY, 0.01);
+      this.z = lerp(this.z, this.newZ, 0.01);
+  
+  }
+  
+  this.move = function() {
+    this.newX = random(-boxSz, boxSz);
+    this.newY = random(-boxSz, boxSz);
+    this.newZ = random(-boxSz, boxSz);
+  }
+  
+ 
+  
+  
+  
+  
+  
+} 
