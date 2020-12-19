@@ -88,14 +88,14 @@ function draw() {
     HighWave.stop();
     fill(120,53,50);
     rotateY(frameCount *0.01);
-    for (var i = 0; i < linkParticles.length/5; i++) {
+    for (var i = 0; i < linkParticles.length/7; i++) {
     linkParticles[i].display();
     }   
     if (frameCount % 50 == 0) {
-    linkParticles[int(random(linkParticles.length/5))].move();
+    linkParticles[int(random(linkParticles.length/7))].move();
     }   
     if(frameCount % 100 == 0) {
-    for (var i = 0; i < linkParticles.length/5; i++) {
+    for (var i = 0; i < linkParticles.length/7; i++) {
     linkParticles[i].move();
   }
 }

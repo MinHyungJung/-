@@ -1,6 +1,11 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #923640;
+  color:#923640;
+  text-align: center;
+  font-size: 10px;
+  position:absolute;
 }
 canvas {
   display: block;
