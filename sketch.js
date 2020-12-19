@@ -89,7 +89,7 @@ function draw() {
     HighWave.stop();
     fill(120,53,50);
     
-    if (mouseY < 370) {
+    if (mouseY < 340) {
       
       frameCount = 0;
       rotateY(0);
@@ -144,7 +144,7 @@ function draw() {
     HighWave.stop();  
     fill(20,53,250);
      
-    if (mouseY < 370) {
+    if (mouseY < 340) {
       
       frameCount = 0;
       rotateY(0);
@@ -193,7 +193,7 @@ function draw() {
      MidWave.stop();
     fill(220,253,5);
        
-       if (mouseY < 370) {
+       if (mouseY < 340) {
       
       frameCount = 0;
       rotateY(0);
